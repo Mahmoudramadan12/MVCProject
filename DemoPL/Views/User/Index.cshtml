@@ -1,0 +1,73 @@
+﻿@model IEnumerable<UserViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@if (Model.Count() > 0)
+{
+    <h1>All Users</h1>
+
+    <form asp-action="Index" class="p-2">
+
+        <div class="form-group position-relative">
+            <input type="text" name="SearchValue" class="form-control w-50 m-auto" placeholder="User's Email" />
+            <button type="submit" class="btn btn-light position-absolute" style="right:25%; top:0; background-color: transparent; border-color: #1b1e21;">
+                Search
+            </button>
+        </div>
+    </form>
+
+    <br />
+    <table class="table table-striped table-hover mt-3">
+        <thead>
+            <tr>
+
+
+                <th>@Html.DisplayNameFor(D => D.Id)</th>
+                <th>@Html.DisplayNameFor(D => D.FName)</th>
+                <th>@Html.DisplayNameFor(D => D.LName)</th>
+                <th>@Html.DisplayNameFor(D => D.Email)</th>
+                <th>@Html.DisplayNameFor(D => D.PhoneNumber)</th>
+                <th>@Html.DisplayNameFor(D => D.Roles)</th>
+                <th>Details</th>
+                <th>Update</th>
+                <th>Delete</th>
+
+            </tr>
+        </thead>
+
+
+        <tbody>
+
+            @foreach (var user in Model)
+            {
+                <tr>
+                   <td>@Html.DisplayFor(u => user.Id)</td>
+                   <td>@Html.DisplayFor(u => user.FName)</td>
+                   <td>@Html.DisplayFor(u => user.LName)</td>
+                   <td>@Html.DisplayFor(u => user.Email)</td>
+                   <td>@Html.DisplayFor(u => user.PhoneNumber)</td>
+                   <td>@string.Join("," , user.Roles)</td>
+                    <partial name="_ButtonPartialView" , model="user.Id" />
+
+                </tr>
+            }
+           
+
+
+        
+
+        </tbody>
+    </table>
+
+
+}
+
+else
+{
+    <div class=" mt-5 alert alert-warning">
+        <h3> There Is No Users  </h3>
+    </div>
+}
