@@ -1,4 +1,4 @@
- A web Application Using MVC architecture and Repository Design Pattern
+ A Web application Using MVC architecture and Repository Design Pattern
 Overview: Developed a secure, role-based management system with N-Tier Architecture for efficient employee and department handling.
 Key Responsibilities:
 Managed user roles and permissions for Admin, HR, and standard users.
